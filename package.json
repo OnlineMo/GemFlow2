@@ -1,0 +1,92 @@
+{
+  "name": "gemflow2",
+  "version": "0.1.0",
+  "description": "GemFlow2：基于 LangGraph 与 Gemini 的每日 DeepResearch 自动化（库A）",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "demo": "tsx scripts/demo.ts",
+    "e2e:today": "tsx scripts/demo.ts",
+    "build": "tsup",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"{src,scripts,docs}/**/*.{ts,tsx,md,json,yml,yaml}\"",
+    "format:check": "prettier --check \"{src,scripts,docs}/**/*.{ts,tsx,md,json,yml,yaml}\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install || true",
+    "run:daily": "node dist/cli.cjs --mode daily",
+    "nav:rebuild": "node dist/cli.cjs --mode nav",
+    "readme:update": "node dist/cli.cjs --mode readme"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@langchain/langgraph": "^0.2.0",
+    "zod": "^3.23.8",
+    "lru-cache": "^10.2.0",
+    "p-limit": "^5.0.0",
+    "p-retry": "^6.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "undici": "^6.18.1",
+    "yaml": "^2.4.5",
+    "fast-glob": "^3.3.2",
+    "date-fns": "^3.6.0",
+    "date-fns-tz": "^3.1.1",
+    "slugify": "^1.6.6",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.0",
+    "tsup": "^8.1.0",
+    "tsx": "^4.11.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.9"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/your/repo.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gemflow2",
+    "langgraph",
+    "gemini",
+    "deepresearch",
+    "automation"
+  ]
+}
