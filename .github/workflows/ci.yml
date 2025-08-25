@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Shanghai
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      TIANAPI_KEY: ${{ secrets.TIANAPI_KEY }}
     strategy:
       matrix:
         node-version: [18.x, 20.x]
